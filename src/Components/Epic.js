@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import EpicItems from './EpicItems';
 const key = `1hIiLkyoh1b9IDwIHpQORgrDDsuyixy4FEzybuel`;
 export class Epic extends Component {
     
@@ -14,7 +15,6 @@ export class Epic extends Component {
         const url = `https://api.nasa.gov/EPIC/api/natural/images?api_key=${key}`;
         fetch(url).then(response => response.json())
         .then(data => {
-            console.log(data);
             this.setState({ data })
         })
     }
@@ -26,19 +26,15 @@ export class Epic extends Component {
             let year = dateArr[0];
             let month = dateArr[1];
             let day = dateArr[2].slice(0, 2);
-            console.log(year, month, day);
-
             return (
-                <li>
-                    <h3>{`${month}.${day}.${year}`}</h3>
-                    <img src={`https://epic.gsfc.nasa.gov/archive/natural/${year}/${month}/${day}/png/${pic.image}.png`} alt="Epic" />
-                </li>
+                <EpicItems year={year} month={month} day={day}
+                    image={pic.image} key={Math.random()+32*899} />
             )
         })
         return (
             <div>
-                epic
-                <ul>
+                <h1 className="text-center">EPIC</h1>
+                <ul className="epic-list-group">
                     {allPics}
                 </ul>
             </div>

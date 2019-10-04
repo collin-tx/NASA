@@ -18,3 +18,27 @@
   text-align: center;
   font-size: 2rem;
 }
+
+.epic-list-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.epic-list-items {
+  text-align: center;
+  height: 400px;
+  width: 400px;
+  list-style: none;
+}
+
+.epic-img {
+  height: 300px;
+  width: 300px;
+}
+
+.epic-item {
+  display: flex;
+  justify-content: center;
+}
