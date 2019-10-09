@@ -32,8 +32,8 @@ export class Epic extends Component {
             )
         })
         return (
-            <div>
-                <h1 className="text-center">EPIC</h1>
+            <div id="epic">
+                <h1 className="epicText text-center">EPIC</h1>
                 <ul className="epic-list-group">
                     {allPics}
                 </ul>
