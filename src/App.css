@@ -1,22 +1,45 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: #000;
   color: whitesmoke;
+}
+
+body {
+  background: #000;
+}
+
+#navbar {
+  background-color: #000;
+  z-index: -1;
 }
 
 #home {
   height: 100vh;
   width: 100vw;
-  background-color: #000;
-  background: url(./img/world.png) no-repeat center/cover;
+  background: url(./img/world.png) no-repeat center center/cover;
   background-size: 700px 680px;
+  background-color: #000;
+  z-index: 5;
 }
 
-#home-text {
+#home-text{
   color: whitesmoke;
   text-align: center;
-  font-size: 2rem;
+  font-size: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  top: 145px;
+  font-weight: bolder;
+  text-shadow: 2px 2px 0.6 #ffffff;
+}
+
+#home-text h1 {
+  font-size: 5rem;
+  font-weight: bolder;
+  vertical-align: center;
 }
 
 .epic-list-group {
