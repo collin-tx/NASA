@@ -13,6 +13,16 @@ body {
   z-index: -1;
 }
 
+#navbar a {
+  margin-right: 10px;
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+#navbar a:hover {
+  opacity: 0.8;
+}
+
 #home {
   height: 100vh;
   width: 100vw;
@@ -33,7 +43,7 @@ body {
   position: relative;
   top: 145px;
   font-weight: bolder;
-  text-shadow: 2px 2px 0.6 #ffffff;
+  text-shadow: 3px 3px lightgrey;
 }
 
 #home-text h1 {
@@ -64,4 +74,8 @@ body {
 .epic-item {
   display: flex;
   justify-content: center;
+}
+
+#apod {
+  background-color: #000;
 }

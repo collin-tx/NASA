@@ -27,14 +27,14 @@ export class Apod extends Component {
         const data = this.state.data;
         const dateArr = data.date && data.date.split('-');
         return (
-            <div>
-                <h2>Astronomy Picture of the Day</h2>
-                <h3>{data.title && data.title}</h3>
+            <div id="apod">
+                <h2 className="p-4 text-center">Astronomy Picture of the Day</h2>
+                <h4 className="pb-2 text-center">{data.title && data.title}</h4>
                 {data.date && 
-                <p>{dateArr[1]}.{dateArr[2]}.{dateArr[0]}</p>
+                <p className="text-center">{dateArr[1]}.{dateArr[2]}.{dateArr[0]}</p>
                 }
                 <img src={data.url && data.url} alt="APOD" />
-                <p>{data.explanation && data.explanation}</p>
+                <p className="p-5">{data.explanation && data.explanation}</p>
             </div>
         )
     }
