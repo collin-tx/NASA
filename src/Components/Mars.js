@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import MarsPhoto from './MarsPhoto';
+import { randomPhotoIndex } from '../utils/helper';
 
 export class Mars extends Component {
     
@@ -14,14 +15,14 @@ export class Mars extends Component {
         const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${key}`;
         fetch(url).then(response => response.json())
             .then(data => {
-                console.log(data);
                 this.setState({ data });
             });
     };
 
     render() {
         const photos = this.state.data.photos;
-        const showPhotos = photos && photos.filter((photo, index) => index < 100)
+        const indexArray = randomPhotoIndex();
+        const showPhotos = photos && photos.filter((photo, index) => indexArray.includes(index))
             .map(photo => {
                 return (
                 <MarsPhoto img={photo.img_src} 
@@ -29,7 +30,6 @@ export class Mars extends Component {
                 rover={photo.rover.name} 
                 date={photo.earth_date} />)
             });
-        
         return (
             <div>
                 <h2 className="text-dark text-center m-5">Mars Rover Photos</h2>
