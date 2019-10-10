@@ -95,3 +95,15 @@ body {
 #apod {
   background-color: #000;
 }
+
+/* Mars */
+#mars-photos-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+
+.mars-item img {
+  width: 350px;
+  height: 350px;
+}

@@ -33,7 +33,7 @@ export class Mars extends Component {
         return (
             <div>
                 <h2 className="text-dark text-center m-5">Mars Rover Photos</h2>
-                <ul>
+                <ul id="mars-photos-group">
                     {showPhotos}
                 </ul>
             </div>
