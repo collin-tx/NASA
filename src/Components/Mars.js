@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import MarsPhoto from './MarsPhoto';
 
 export class Mars extends Component {
     
@@ -13,18 +14,28 @@ export class Mars extends Component {
         const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${key}`;
         fetch(url).then(response => response.json())
             .then(data => {
-                //console.log(data);
+                console.log(data);
                 this.setState({ data });
             });
     };
 
     render() {
         const photos = this.state.data.photos;
-        const showPhotos = photos && photos.filter((photo, index) => index < 48);
-        console.log(showPhotos);
+        const showPhotos = photos && photos.filter((photo, index) => index < 100)
+            .map(photo => {
+                return (
+                <MarsPhoto img={photo.img_src} 
+                key={photo.id} 
+                rover={photo.rover.name} 
+                date={photo.earth_date} />)
+            });
+        
         return (
             <div>
-                MARSSS
+                <h2 className="text-dark text-center m-5">Mars Rover Photos</h2>
+                <ul>
+                    {showPhotos}
+                </ul>
             </div>
         )
     }
