@@ -7,6 +7,7 @@ import Epic from './Components/Epic';
 import Nav from './Components/Nav';
 import Mars from './Components/Mars';
 import 'bootstrap/dist/css/bootstrap.css'
+import Asteroids from './Components/Asteroids';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/apod" component={Apod} />
         <Route path="/epic" component={Epic} />
         <Route path="/mars" component={Mars} />
+        <Route path="/asteroids" component={Asteroids} />
       </Switch>
     </BrowserRouter>
   );
