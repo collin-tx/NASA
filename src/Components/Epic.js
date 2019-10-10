@@ -4,10 +4,12 @@ const key = `1hIiLkyoh1b9IDwIHpQORgrDDsuyixy4FEzybuel`;
 export class Epic extends Component {
     
     state = {
-        data: ''
+        data: '',
+        loading: false
     }
 
     componentDidMount(){
+        this.setState({ loading: true })
         this.getEPIC();
     }
 
@@ -15,8 +17,8 @@ export class Epic extends Component {
         const url = `https://api.nasa.gov/EPIC/api/natural/images?api_key=${key}`;
         fetch(url).then(response => response.json())
         .then(data => {
-            this.setState({ data })
-        })
+            this.setState({ data, loading: false });
+        });
     }
     
     render() {
@@ -30,10 +32,13 @@ export class Epic extends Component {
                 <EpicItems year={year} month={month} day={day}
                     image={pic.image} key={Math.random()+32*899} />
             )
-        })
+        });
+
+        let loading
         return (
             <div id="epic">
-                <h1 className="epicText text-center">EPIC</h1>
+                <h1 className="epicText text-center mb-5">EPIC</h1>
+                <p className="text">{this.state.loading ? 'Loading...':''}</p>
                 <ul className="epic-list-group">
                     {allPics}
                 </ul>

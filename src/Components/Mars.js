@@ -4,19 +4,24 @@ import { randomPhotoIndex } from '../utils/helper';
 
 export class Mars extends Component {
     
-    state = { data: ''}
+    state = { 
+        data: '',
+        loading: false
+    }
     
     componentDidMount(){
         this.getMarsPhotos();
     }
 
     getMarsPhotos = () => {
+        this.setState({ loading: true })
         const key = `1hIiLkyoh1b9IDwIHpQORgrDDsuyixy4FEzybuel`;
         const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${key}`;
         fetch(url).then(response => response.json())
             .then(data => {
                 this.setState({ data });
             });
+        this.setState( ()=> ({ loading: false }));
     };
 
     render() {
@@ -31,11 +36,12 @@ export class Mars extends Component {
                 date={photo.earth_date} />)
             });
         return (
-            <div>
+            <div id="mars-list">
                 <h2 className="text-dark text-center m-5">Mars Rover Photos</h2>
                 <ul id="mars-photos-group">
                     {showPhotos}
                 </ul>
+                <p className="text-dark text-center">{!photos ? 'Loading...':''}</p>
             </div>
         )
     }
